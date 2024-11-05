@@ -1,0 +1,29 @@
+{
+  "name": "the-nwrk",
+  "version": "1.0.0",
+  "description": "This app will be used as a solution to the lack of data access in growing Businesses",
+  "main": "App.js",
+  "scripts": {
+    "start": "node --watch server-app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gmrvofficial/The-NWRK.git"
+  },
+  "author": "samuel bonner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gmrvofficial/The-NWRK/issues"
+  },
+  "homepage": "https://github.com/Gmrvofficial/The-NWRK#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.6.3",
+    "nodemailer": "^6.9.16",
+    "react-router-dom": "^6.26.2"
+  }
+}
