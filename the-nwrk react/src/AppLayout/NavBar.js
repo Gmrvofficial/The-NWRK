@@ -43,7 +43,7 @@ const NavBar = ()=>{
                 <div><NavLink to={'/'} className='justify-center text-gray-700 hover:text-gray-900 text-gray-700 py-2 px-4 rounded-lg transition hover:drop-shadow-[0_0_15px_rgba(75,85,99,0.6)] transition duration-300 hover:bg-gray-300 flex p-2'> <img src={market} alt="" className="md:h-[33px] w-auto bg-blue- p-1"/> </NavLink></div>
                 <div><NavLink to={'/'} className='text-gray-700 hover:text-gray-900  text-gray-700 py-2 px-4 rounded-lg transition hover:drop-shadow-[0_0_15px_rgba(75,85,99,0.6)] transition duration-300 hover:bg-gray-300 flex p-1'> <img src={Link2} alt="link" className="md:h-[30px] w-auto bg-blue- p-1"/></NavLink></div>
                 <div><NavLink to={'/messages'} className='text-gray-700 hover:text-gray-900  text-gray-700 py-2 px-2 rounded-lg transition hover:drop-shadow-[0_0_15px_rgba(75,85,99,0.6)] transition duration-300 hover:bg-gray-300 flex p-1'> <img src={message} className="md:h-[33px] w-auto bg-blue- p-1" alt="" /></NavLink> </div>
-                <div><NavLink to={'/'} className='text-gray-700 hover:text-gray-900  text-gray-700 py-2 px-2 rounded-lg transition hover:drop-shadow-[0_0_15px_rgba(75,85,99,0.6)] transition duration-300 hover:bg-gray-300 flex p-1'><img src={notification} className="md:h-[33px] w-auto bg-blue- p-1"/></NavLink></div>
+                <div><NavLink to={'/notifications'} className='text-gray-700 hover:text-gray-900  text-gray-700 py-2 px-2 rounded-lg transition hover:drop-shadow-[0_0_15px_rgba(75,85,99,0.6)] transition duration-300 hover:bg-gray-300 flex p-1'><img src={notification} className="md:h-[33px] w-auto bg-blue- p-1"/></NavLink></div>
             </div>
 
         </div>
