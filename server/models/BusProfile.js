@@ -1,13 +1,16 @@
 const {mongoose} = require('../db')
 
-const busProfile = new mongoose.Schema({
+const BusProfile = new mongoose.Schema({
 
    Name : {
     type: String,
     Required: true,
    },
-   location:{
-      
+   Niche:{
+      type: String,
+      Required:true
    },
    
 })
+
+module.exports = mongoose.model("BusProfile", BusProfile);

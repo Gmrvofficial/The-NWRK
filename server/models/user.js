@@ -1,26 +1,31 @@
-const {mongoose} = require('../db')
+const { mongoose } = require('../db');
 
-const User = new mongoose.Schema({
-
+const UserSchema = new mongoose.Schema({
     nicheType: {
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     },
-    Business: {
-        required
+    business: {
+        type: String,
+        required: false,
     },
-    username:{
+    username: {
         type: String,
         required: true,
         unique: true,
     },
-    password:{
+    password: {
         type: String,
         required: true,
     },
-},
-{timestamps:true})
+    // the list of rooms or messages they would have access to
+    participants:{
+        type: [mongoose.Schema.Types.ObjectId],
+        ref:'Conversation',
+        default: [],
+        required: true,
+    }
+}, 
+{ timestamps: true });
 
-
-module.exports = mongoose.Model("model", User)
-
+module.exports = mongoose.model("User", UserSchema);

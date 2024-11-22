@@ -7,7 +7,7 @@ return(
     <>
 
     <NavBar/>
-    
+    {/* (renders the matched route's component) */}
     <Outlet />
 
     </>
