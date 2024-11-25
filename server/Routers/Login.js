@@ -1,71 +1,79 @@
-const Message = require('../models/message')
-
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const AuthenticateTKN = require('../middleware/Auth')
+const Login = require('../models/LoginSchema')
 const express = require('express')
 const router = express.Router()
+const SECRET_KEY = process.env.key
 
 
+router.post('/register', async (req,res)=>{
+   const {email,password,username} = req.body
+   //hashed/encrypted password
+   const hashedPass = await bcrypt.hash(password,10)
+    const newUser = new Login({email,password:hashedPass,username})
 
-router.get("/", async (req,res)=>{
+
     try{
-        const letter = await Message.find();
+        const existingUsers = await Login.findOne({email})
+        if (existingUsers){
+            return res.status(409).send('User already exists')
+        }
 
-        res.send(letter);
-    } catch (err){
-        console.error('Error fetching Messages:', err);
-        res.status(500).send(err.message);
+        await newUser.save()
+
+        console.log('User Login Successful');
+        return(
+            res.status(201)
+            .send('Login Successful')
+        )
+    }catch(err){
+        return(
+            res.status(401).send('unable to login'),
+            console.error('User Login failed',err)
+        )
+        
     }
 
 })
 
-router.post("/newMessage", async (req,res)=>{
+router.post('/Login', async (req,res)=>{
+    
     try{
-        const newMessage = new Message(req.body);
+       // destructure the email and password
+        const {email,password}= req.body
 
-        await newMessage.save();
+        //find users
+        const user = await Login.findOne({email})
 
-        console.log(newMessage);
+        if(!user){
+            return(
+                res.status(401)
+                .send({message:'unauthorized user'})
+            )
+        }
+
+        //compare passwords
+        const isPassValid = await bcrypt.compare(password,user.password)
+        if (!isPassValid){
+            return(
+                res.status(401).send('Invalid Email or passwerd')
+            )
+        }
+
+        const payload = {userid:user._id,email:user.email}
+        const token = jwt.sign(payload,SECRET_KEY,{expiresIn:'1hr'})
+
+        console.log('Login Successful');
+        res.status(200).json({message:'Login Successful',token: token})
         
-        res.send(newMessage);
-
-    } catch (err){
-        console.error('Error creating messages:', err);
-        res.status(500).send(err.message);
+        
+    }catch(err){
+        return(
+            res.status(500).send('unable to login'),
+            console.error('User Login failed',err)
+        )
+        
     }
 
 })
-
-router.put("/Edit/:messageiD", async (req,res)=>{
-    try{
-        const messID = req.params.messageiD
-        const updateData = req.body
-        const updatedEvent = await Message.findByIdAndUpdate(messID, updateData,{new:true})
-        
-        // send message that new room is added
-        res.send(`Event updated`);
-        
-
-    } catch (err){
-        console.error('Error creating messages:', err);
-        res.status(500).send(err.message);
-    }
-
-})
-
-router.delete("/Delete/:messageiD", async (req,res)=>{
-    try{
-        const messID = req.params.messageiD
-        const deletedData = req.body
-        const updatedEvent = await Message.findByIdAndDelete(messID, deletedData,{new:true})
-        
-        // send message that new room is added
-        res.send(`Event deleted`);
-        
-
-    } catch (err){
-        console.error('Error creating messages:', err);
-        res.status(500).send(err.message);
-    }
-
-})
-
-module.exports = router

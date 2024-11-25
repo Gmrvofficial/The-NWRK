@@ -4,17 +4,19 @@ const LoginSchema = new mongoose.Schema({
 
     email:{
         type:String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type:String,
-        required: true
+        required: true,
     },
     username:{
         type: String,
         unique:true,
+        required:true
     }
 })
 
 
-module.exports = ('LoginSchema', LoginSchema)
+module.exports = mongoose.model('Login', LoginSchema)
