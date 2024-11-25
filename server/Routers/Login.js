@@ -41,7 +41,7 @@ router.post('/Login', async (req,res)=>{
     
     try{
        // destructure the email and password
-        const {email,password}= req.body
+        const {email,password} = req.body
 
         //find users
         const user = await Login.findOne({email})

@@ -1,3 +1,4 @@
+const AuthenticateTKN = require('../middleware/Auth');
 const Message = require('../models/message')
 
 const express = require('express')
@@ -5,11 +6,11 @@ const router = express.Router()
 
 
 
-router.get("/", async (req,res)=>{
+router.get("/", AuthenticateTKN ,async (req,res)=>{
     try{
-        const letter = await Message.find();
+        const message = await Message.find();
 
-        res.send(letter);
+        res.send(message);
     } catch (err){
         console.error('Error fetching Messages:', err);
         res.status(500).send(err.message);
@@ -17,7 +18,7 @@ router.get("/", async (req,res)=>{
 
 })
 
-router.post("/newMessage", async (req,res)=>{
+router.post("/newMessage",AuthenticateTKN, async (req,res)=>{
     try{
         const newMessage = new Message(req.body);
 
@@ -34,7 +35,7 @@ router.post("/newMessage", async (req,res)=>{
 
 })
 
-router.put("/Edit/:messageiD", async (req,res)=>{
+router.put("/Edit/:messageiD",AuthenticateTKN , async (req,res)=>{
     try{
         const messID = req.params.messageiD
         const updateData = req.body
@@ -51,7 +52,7 @@ router.put("/Edit/:messageiD", async (req,res)=>{
 
 })
 
-router.delete("/Delete/:messageiD", async (req,res)=>{
+router.delete("/Delete/:messageiD",AuthenticateTKN, async (req,res)=>{
     try{
         const messID = req.params.messageiD
         const deletedData = req.body
