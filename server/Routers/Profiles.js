@@ -49,3 +49,5 @@ router.put('/update',AuthenticateTKN,async (req,res)=>{
         return res.send({message:"Unable to get profile"})
     }
 })
+
+module.exports = router; 

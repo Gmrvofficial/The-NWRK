@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const AuthenticateTKN = require('../middleware/Auth')
 const Login = require('../models/LoginSchema')
 const express = require('express')
+const { model } = require('mongoose')
 const router = express.Router()
 const SECRET_KEY = process.env.key
 
@@ -55,7 +56,7 @@ router.post('/Login', async (req,res)=>{
 
         //compare passwords
         const isPassValid = await bcrypt.compare(password,user.password)
-        
+
         if (!isPassValid){
             return(
                 res.status(401).send('Invalid Email or passwerd')
@@ -78,3 +79,5 @@ router.post('/Login', async (req,res)=>{
     }
 
 })
+
+module.exports = router
