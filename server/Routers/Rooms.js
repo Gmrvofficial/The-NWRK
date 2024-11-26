@@ -1,3 +1,5 @@
+import AuthenticateTKN from '../middleware/Auth'
+
 const Rooms = require('../models/Rooms')
 
 const express = require('express')
@@ -5,13 +7,13 @@ const router = express.Router()
 
 
 
-router.get('/',async(req,res)=>{
+router.get('/',AuthenticateTKN ,async(req,res)=>{
     const getRooms = await Rooms.find()
     res.status(200).json(Rooms);
 })
 
 
-router.post('/newRoom',async(req,res)=>{
+router.post('/newRoom',AuthenticateTKN,async(req,res)=>{
     try{
         //establishing the new room var
         const newRoom = new Rooms(req.body);
@@ -23,12 +25,12 @@ router.post('/newRoom',async(req,res)=>{
         console.error('Error creating rooom:', err);
         res.status(500).send(err.message);
     }
-    f
+    
 })
 
 
 
-router.delete('/deleteRoom/:id',async(req,res)=>{
+router.delete('/deleteRoom/:id',AuthenticateTKN,async(req,res)=>{
     try{
         //establishing the new room var
         const id = new Rooms(req.params.id);

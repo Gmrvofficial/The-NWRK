@@ -19,6 +19,7 @@ const AuthenticateTKN = (req, res, next) => {
 
     // try-catch for signing the secret key and token
     try{
+      //verify decodes the token once it sees the secret key
       const decoded = jwt.verify(token,secret_key)
 
       req.user = decoded
