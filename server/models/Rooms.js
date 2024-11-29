@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'); // Import mongoose directly
 const MessageSchema = require('./message'); // Import the message schema
-const UserSchema = require('../models/user')
+const UserSchema = require('../models/User')
 
 const RoomSchema = new mongoose.Schema({
     name: { // Define the name field

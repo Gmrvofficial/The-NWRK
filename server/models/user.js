@@ -1,6 +1,10 @@
 const { mongoose } = require('../db');
 
 const UserSchema = new mongoose.Schema({
+    email:{
+        type:String,
+        required:true
+    },
     nicheType: {
         type: String,
         required: true,

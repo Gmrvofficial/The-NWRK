@@ -1,8 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const User = require("../models/user");
 const AuthenticateTKN = require('../middleware/Auth');
-const user = require('../models/user');
+const User = require('../models/User');
 const bcrypt = require ('bcrypt')
 
 router.get('/',AuthenticateTKN,async (req,res)=>{
@@ -42,7 +41,7 @@ router.put('/update',AuthenticateTKN,async (req,res)=>{
         currentUser.email = email || currentUser.email
         currentUser.business = business || currentUser.business
         currentUser.nicheType = nicheType || currentUser.nicheType
-
+        await currentUser.save()
     }catch(err){
         console.log(err,'Unable to get profile');
         

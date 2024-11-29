@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const AuthenticateTKN = require('../middleware/Auth')
 const Login = require('../models/LoginSchema')
+const User = require('../models/User')
 const express = require('express')
 const { model } = require('mongoose')
 const router = express.Router()
@@ -12,11 +13,11 @@ router.post('/register', async (req,res)=>{
    const {email,password,username} = req.body
    //hashed/encrypted password
    const hashedPass = await bcrypt.hash(password,10)
-    const newUser = new Login({email,password:hashedPass,username})
+    const newUser = new User({email,password:hashedPass,username})
 
 
     try{
-        const existingUsers = await Login.findOne({email})
+        const existingUsers = await User.findOne({email})
         if (existingUsers){
             return res.status(409).send('User already exists')
         }
@@ -45,7 +46,7 @@ router.post('/Login', async (req,res)=>{
         const {email,password} = req.body
 
         //find users
-        const user = await Login.findOne({email})
+        const user = await User.findOne({email})
 
         if(!user){
             return(
