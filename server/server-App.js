@@ -12,6 +12,7 @@ const message = require("./Routers/Message");
 const Rooms = require("../server/Routers");
 const profile = require('../server/Routers/Profiles')
 const login = require('../server/Routers/Login')
+const notification = require('../server/Routers/Notification')
 
 app.use(express.json());
 app.use(cors());
@@ -23,6 +24,7 @@ app.use("/messages", message);
 app.use("/Rooms", Rooms);
 app.use('/profile',profile)
 app.use('/login',login)
+app.use('/notifications',notification)
 
 
 

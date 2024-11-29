@@ -20,11 +20,15 @@ router.get('/', AuthenticateTKN, async (req,res)=>{
     try{
         const ID = req.params.id 
         const deletedNotes = await notification.findByIdAndDelete(ID)
+        
         if(!deletedNotes){
             res.status(404).json({message:'Notification not found'})
         }
 
+        res.send('Notification Successfully Deleted')
     }catch{
         res.status(500).json({message:'Unable to DELETE Notification'})
     }
- })
+})
+
+module.exports = router;
