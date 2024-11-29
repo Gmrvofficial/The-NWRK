@@ -16,7 +16,6 @@ const NotificationSchema = new mongoose.Schema({
         default: Date.now,
         required: true
     }
-
 })
 
 module.exports = mongoose.model('Notifications', NotificationSchema)
