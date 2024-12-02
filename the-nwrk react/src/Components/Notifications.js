@@ -25,6 +25,7 @@ const Notification = () =>{
             //retrieve response data
             const data = await response.json()
             SetNotification(data)
+            
         }catch(err){
             console.error(err);
             
