@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="login.js" defer></script>
+</head>
+<body>
+    <div class="flex items-center justify-center min-h-screen">
+        <form id="loginForm" onsubmit="submitLogin(event)" class="bg-white p-6 rounded shadow-md">
+            <input type="text" id="username" name="username" placeholder="Username" class="mb-4 p-2 border rounded w-full">
+            <input type="password" id="password" name="password" placeholder="Password" class="mb-4 p-2 border rounded w-full">
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded w-full">Login</button>
+        </form>
+    </div>
+</body>
+</html>
