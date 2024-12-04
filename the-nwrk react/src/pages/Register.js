@@ -1,6 +1,7 @@
 import { useState } from "react";
 import plug from '../Assets/plug.png'
-import plug from '../Assets/plug.png'
+import link from '../Assets/Link2.png'
+
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -40,13 +41,19 @@ const RegisterPage = () => {
   return(
     <>
         <div className="border">
-            <div className="flex items-center justify-center min-h-screen">
+            <div className="bg-zinc-100 flex items-center justify-center min-h-screen">
                 <form className="" onSubmit={handleRegister}>
                     <div className="bg-black p-20 rounded-md ">
                         <div className="flex items-center justify-center p-6">
-                            <div className="size-7 "><img src={plug} alt="" /></div>
-                            <h1 className=" text-xl font-bold text-white">Sign Up</h1>
+                            <div className="w-20"><img src={link} alt="" /></div>
+                        </div>
+                        <div className="flex items-center justify-center ">
+                                <div className="rotate-90 w-10 animate-pulse"><img src={plug} alt="" /></div>
 
+                            </div>
+
+                        <div className="flex items-center justify-center p-6">
+                            <h1 className=" text-xl font-bold text-white">Sign Up</h1>
                         </div>
                         <div className="p-6 mx-6">
 

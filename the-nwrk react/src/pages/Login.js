@@ -1,5 +1,6 @@
 import { useState } from "react"
-import logo from '../Assets/nwrklogob7.jpg'
+import nwrk from '../Assets/NWRK.png'
+import plug from '../Assets/plug.png'
 const LoginPage = ()=>{ 
     const [Name,setUsername] = useState('')
     const [password,setPassword] = useState('')
@@ -31,8 +32,15 @@ const LoginPage = ()=>{
                 <div className="flex items-center justify-center min-h-screen">
                     <form className="" onSubmit={handleSubmit}>
                         <div className="bg-black p-20 rounded-md ">
+                            <div className="flex items-center justify-center ">
+                                <div className="w-40"><img src={nwrk} alt="" /></div>
+
+                            </div>
+                            <div className="flex items-center justify-center ">
+                                <div className="rotate-90 w-10 animate-pulse"><img src={plug} alt="" /></div>
+
+                            </div>
                             <div className="flex items-center justify-center p-6">
-                                {/* <div><img src={logo} alt="" /></div> */}
                                 <h1 className=" text-xl font-bold text-white">Log In</h1>
 
                             </div>
