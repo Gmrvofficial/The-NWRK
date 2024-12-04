@@ -11,6 +11,7 @@ import AppLayout from "../src/AppLayout/AppLayout";
 import Message from "./Components/Message";
 import Notifications from "../src/Components/Notifications";
 import LoginPage from "../src/pages/Login";
+import RegisterPage from "./pages/Register";
 
 
 //Routes for the main application
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route path="/Messages" element={<Message />} />
       <Route path="/Notifications" element={<Notifications />}/>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="login/register" element={<RegisterPage/>}/>
     </Route>
   )
 );

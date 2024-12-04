@@ -7,15 +7,15 @@ const LoginPage = ()=>{
     const handleSubmit = async (e)=>{
         e.preventDefault()
         try{
-            const uRL = 'https://localhost:3000/login/Login'
+            const uRL = 'http://localhost:3000/login/Login'
             const response = await fetch(uRL,{
                 "method":'POST',
                 headers:{'Content-Type':'application/json'},
                 body:JSON.stringify({username:Name,password:password})
             })
-            const data = await response.json()
+            const data = await response.json();
             if(!response.ok){
-                console.log('Unable to Login');
+                console.log('Unable to Login',data);
                 throw new Error('Error Logging in')
                 
             }

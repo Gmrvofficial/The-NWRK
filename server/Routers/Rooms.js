@@ -1,4 +1,4 @@
-import AuthenticateTKN from '../middleware/Auth'
+const AuthenticateTKN = require('../middleware/Auth')
 
 const Rooms = require('../models/Rooms')
 
@@ -47,4 +47,4 @@ router.delete('/deleteRoom/:id',AuthenticateTKN,async(req,res)=>{
     
 })
 
-export default router;
+module.exports = router;

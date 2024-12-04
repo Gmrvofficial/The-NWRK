@@ -10,7 +10,7 @@ const RoomSchema = new mongoose.Schema({
     },
 
     // Define an array of MessageSchema
-    messages: [MessageSchema], 
+    messages: [{ type: mongoose.Schema.Types.ObjectId, ref:'Message'}], 
 
     participants: {
         type: [{ type: mongoose.Schema.Types.ObjectId, ref:'User'}],

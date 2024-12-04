@@ -9,10 +9,11 @@ const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
 const message = require("./Routers/Message");
-const Rooms = require("../server/Routers");
-const profile = require('../server/Routers/Profiles')
-const login = require('../server/Routers/Login')
-const notification = require('../server/Routers/Notification')
+const Rooms = require("./Routers/Rooms");
+const profile = require('./Routers/Profiles')
+const login = require('./Routers/Login')
+const notification = require('./Routers/Notification')
+
 
 app.use(express.json());
 app.use(cors());

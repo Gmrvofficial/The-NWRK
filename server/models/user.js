@@ -6,12 +6,14 @@ const UserSchema = new mongoose.Schema({
         required:true
     },
     nicheType: {
-        type: String,
+        type: [String],
         required: true,
+        default:[]
     },
     business: {
         type: String,
         required: false,
+        default:[]
     },
     username: {
         type: String,
@@ -27,7 +29,7 @@ const UserSchema = new mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId],
         ref:'Conversation',
         default: [],
-        required: true,
+        required: false,
     }
 }, 
 { timestamps: true });
