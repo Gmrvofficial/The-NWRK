@@ -8,7 +8,7 @@ const LoginPage = ()=>{
     const [niche, setNiche] = useState("");
     const [email,setEmail] =useState('');
     const[message,setMessage]=useState('')
-    const[Errmessage,setErrMessage]=useState('')
+    
     
     const handleSubmit = async (e)=>{
         e.preventDefault()
@@ -31,11 +31,11 @@ const LoginPage = ()=>{
                 throw new Error('Error Logging in')
                 
             }else{
-            setMessage(data.message)
+            setMessage({message:'Login Successfull',type:'success'})
            }
         }catch(err){
             console.error(err);
-            setErrMessage(err.message)
+            setMessage({message:data.message,type:'error'})
         }
     }
     
@@ -86,7 +86,12 @@ const LoginPage = ()=>{
                                 </button>
                             </div>
 
-                            <div className="text-lime-400 text-center">{message}</div> 
+                            <div>
+                                {message.text && (
+                                    <div className={`${message.type === 'success' ? 'text-lime-400': 'text-rose-600' }`}> 
+                                    {message.text}
+                                    </div>)}
+                                </div> 
                             
 
                         </div>
