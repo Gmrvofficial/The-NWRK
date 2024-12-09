@@ -8,6 +8,7 @@ const LoginPage = ()=>{
     const [niche, setNiche] = useState("");
     const [email,setEmail] =useState('');
     const[message,setMessage]=useState('')
+    const[Errmessage,setErrMessage]=useState('')
     
     const handleSubmit = async (e)=>{
         e.preventDefault()
@@ -34,7 +35,7 @@ const LoginPage = ()=>{
            }
         }catch(err){
             console.error(err);
-            setMessage(err.message)
+            setErrMessage(err.message)
         }
     }
     
@@ -85,7 +86,8 @@ const LoginPage = ()=>{
                                 </button>
                             </div>
 
-                            <div className="text-white text-center">{message}</div>
+                            <div className="text-lime-400 text-center">{message}</div> 
+                            
 
                         </div>
 
