@@ -4,25 +4,37 @@ import plug from '../Assets/plug.png'
 const LoginPage = ()=>{ 
     const [Name,setUsername] = useState('')
     const [password,setPassword] = useState('')
+    const [business, setBusiness] = useState("");
+    const [niche, setNiche] = useState("");
+    const [email,setEmail] =useState('');
+    const[message,setMessage]=useState('')
     
     const handleSubmit = async (e)=>{
         e.preventDefault()
         try{
-            const uRL = 'http://localhost:3000/login/Login'
+            const uRL = 'http://localhost:3000/Login/'
             const response = await fetch(uRL,{
                 "method":'POST',
                 headers:{'Content-Type':'application/json'},
-                body:JSON.stringify({username:Name,password:password})
+                body:JSON.stringify({
+                    username:Name,
+                    password:password,
+                    business:business,
+                    nicheType:niche,
+                    email:email})
             })
             const data = await response.json();
+
             if(!response.ok){
                 console.log('Unable to Login',data);
                 throw new Error('Error Logging in')
                 
-            }
-           
+            }else{
+            setMessage(data.message)
+           }
         }catch(err){
             console.error(err);
+            setMessage(err.message)
         }
     }
     
@@ -56,7 +68,7 @@ const LoginPage = ()=>{
                             </div>
                             <div className="p-6 mx-6">
                                 <input 
-                                className="rounded-md p-1 "
+                                className="rounded-md p-1"
                                 type="password"
                                 placeholder="Password"
                                 value ={password}
@@ -72,6 +84,8 @@ const LoginPage = ()=>{
                                     Log In
                                 </button>
                             </div>
+
+                            <div className="text-white text-center">{message}</div>
 
                         </div>
 

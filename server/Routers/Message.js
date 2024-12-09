@@ -1,5 +1,6 @@
 const AuthenticateTKN = require('../middleware/Auth');
 const Message = require('../models/message')
+const notification = require('../models/notifications')
 
 const express = require('express')
 const router = express.Router()
@@ -27,6 +28,13 @@ router.post("/newMessage",AuthenticateTKN, async (req,res)=>{
         console.log(newMessage);
         
         res.send(newMessage);
+
+        //establish new notification to receiver
+        const newNotification = new Notification({
+            user: req.body.receiver,
+            
+
+        })
 
     } catch (err){
         console.error('Error creating messages:', err);

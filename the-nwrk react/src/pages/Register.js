@@ -23,7 +23,7 @@ const RegisterPage = () => {
           email: email,
           password: password,
           business: business,
-          niche: niche,
+          niche: niche.split(','),
           username: username,
         }),
       });
@@ -90,7 +90,7 @@ const RegisterPage = () => {
                             <button 
                             className="rounded-lg bg-sky-300 p-2 hover:animate-pulse"
                             >
-                                Log In
+                                Sign Up
                             </button>
                         </div>
 
