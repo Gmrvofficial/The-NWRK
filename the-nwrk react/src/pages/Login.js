@@ -35,7 +35,7 @@ const LoginPage = ()=>{
            }
         }catch(err){
             console.error(err);
-            setMessage({message:data.message,type:'error'})
+            setMessage({message:err.message,type:'error'})
         }
     }
     
