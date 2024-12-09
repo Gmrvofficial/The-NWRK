@@ -1,6 +1,7 @@
 import { useState } from "react"
 import nwrk from '../Assets/NWRK.png'
 import plug from '../Assets/plug.png'
+import { NavLink } from "react-router-dom"
 const LoginPage = ()=>{ 
     const [Name,setUsername] = useState('')
     const [password,setPassword] = useState('')
@@ -38,6 +39,7 @@ const LoginPage = ()=>{
             setMessage({message:err.message,type:'error'})
         }
     }
+
     
     return(
         <>
@@ -80,7 +82,7 @@ const LoginPage = ()=>{
 
                             <div className=" flex items-center justify-center p-3">
                                 <button 
-                                className="rounded-lg bg-sky-300 p-2 hover:animate-pulse"
+                                className="rounded-lg bg-sky-300 p-2 hover:text-sky-500 hover:bg-white hover:font-bold duration-150 ease-in-out"
                                 >
                                     Log In
                                 </button>
@@ -94,7 +96,12 @@ const LoginPage = ()=>{
                                 </div> 
                             
 
-                        </div>
+                            </div>
+                            <div className="flex items-center justify-center p-2 ">
+                                <NavLink to='/register' className='hover:text-sky-300 duration-150 ease-in-out'> 
+                                Already have an account? Sign Up!
+                                </NavLink>
+                            </div>
 
                     </form>
 
