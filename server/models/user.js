@@ -7,13 +7,13 @@ const UserSchema = new mongoose.Schema({
     },
     nicheType: {
         type: [String],
-        required: true,
+        required: false,
         default:[]
     },
     business: {
         type: String,
         required: false,
-        default:[]
+        default:''
     },
     username: {
         type: String,
