@@ -13,7 +13,7 @@ import Notifications from "../src/Components/Notifications";
 import LoginPage from "../src/pages/Login";
 import RegisterPage from "./pages/Register";
 import ProfilePage from "./pages/profile";
-import FYP from "./pages/FYP";
+import Fyp from './pages/Fyp';
 
 
 //Routes for the main application
@@ -25,7 +25,7 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage/>}/>
       <Route path='/profile' element={<ProfilePage/>}/>
-      <Route path='/Fyp' element={<FYP/>}/>
+      <Route path='/Fyp' element={<Fyp/>}/>
     </Route>
   )
 );

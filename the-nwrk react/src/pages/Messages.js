@@ -47,7 +47,7 @@ const Messages = async () =>{
                 message.map((conversations,index)=>{
                     
                     <div
-                    key={}
+                    key={conversations._id}
                     className="border-2 border-neutral-400">
 
                     </div>
@@ -60,4 +60,4 @@ const Messages = async () =>{
 }
 
 
-export default MainRoom;
+export default Messages;
