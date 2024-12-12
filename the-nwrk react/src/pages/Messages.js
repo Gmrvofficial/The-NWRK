@@ -1,7 +1,7 @@
 import { useState,useEffect, } from "react";
 import { useNavigate } from "react-router-dom";
 import Message from "../Components/Message";
-import { index } from "../../../server/models/message";
+import load from '../Assets/load.png';
 
 
 
@@ -14,7 +14,7 @@ const Messages = async () =>{
 
     // Function to create a new room
 
-    const FetchRoom = async () =>{
+    const FetchMessages = async () =>{
         try{
 
             const uRL = 'http://localhost:3000/messages/'
@@ -34,13 +34,24 @@ const Messages = async () =>{
 
     }
 
+    const HandleSendM = async ()=>{
+        try{
+            uRL = 'http://locslhost:3000/messages/newMessagee'
+            const response = await fetch(uRL,{
+                
+            }
+            )
+        }
+    }
+
     const messageGroups = async ()={
 
     }
 
     return(
         <>
-            {!message && <p className="animate-pulse">Loading...</p> }
+            {!message && <p className="animate-pulse">Loading...</p>}
+            {!message && <img src={load} alt="loading" className="animate-spin"/>}
 
             {message && 
 
