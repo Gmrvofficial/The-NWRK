@@ -29,17 +29,18 @@ const RegisterPage = () => {
 
       });
 
-      const data = await response.json();
+      const data = await response;
+
       if (!response.ok) {
-        console.log("Unable to Register", data);
+        console.log("Unable to Register");
+        console.log(data)
         throw new Error("Unable to Register");
       }
 
       setMessage({ content: "Registration", type: "success" });
-      console.log();
       navigate('/')
     } catch (err) {
-      setMessage({ content: err.message, type: "error" });
+      setMessage({ content: err.message, type: "error"});
       console.log(err);
     }
   };

@@ -27,11 +27,11 @@ const LoginPage = ()=>{
                     nicheType:niche,
                     email:email})
             })
-            // let data = await response.json();
+            let data = await response;
 
             if(!response.ok){
             
-                console.log('Unable to Login');
+                console.log('Unable to Login',data);
                 throw new Error('Error Logging in')
                 
             }else{
@@ -40,7 +40,7 @@ const LoginPage = ()=>{
            }
         }catch(err){
             console.error(err);
-            setMessage({content:err.message,type:'error'}) 
+            setMessage({content: err.message, type:'error'}) 
         }
     }
 
