@@ -8,7 +8,7 @@ const FYP = ()=>{
 
     return (
         <>
-          <div className="bg-black">
+          <div className="bg-black h-dvh">
             <img src={inProgress} alt="" />
             <div className="flex items-center justify-center">
                 <h1 className="text-white animate-pulse font-bold font-xl p-6">Construction In Progress</h1>

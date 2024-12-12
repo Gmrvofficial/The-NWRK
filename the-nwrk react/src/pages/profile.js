@@ -9,7 +9,7 @@ const ProfilePage = () => {
 
   return (
     <>
-      <div className="bg-black">
+      <div className="bg-black ">
         <img src={inProgress} alt="" />
         
         <div className="flex items-center justify-center">

@@ -14,19 +14,24 @@ import LoginPage from "../src/pages/Login";
 import RegisterPage from "./pages/Register";
 import ProfilePage from "./pages/profile";
 import FYP from './pages/FYP';
-
+import AuthLayout from "./AppLayout/Authlayout";
 
 //Routes for the main application
 const router = createBrowserRouter(
   createRoutesFromElements(
+    <>
     <Route path='/' element={<AppLayout />}>
       <Route path="/Messages" element={<Message />} />
       <Route path="/Notifications" element={<Notifications />}/>
-      <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage/>}/>
       <Route path='/profile' element={<ProfilePage/>}/>
       <Route path='/Fyp' element={<FYP/>}/>
+    </Route>,
+    <Route element={<AuthLayout/>}>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage/>}/>
     </Route>
+    </>
   )
 );
 
