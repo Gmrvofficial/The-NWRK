@@ -14,22 +14,19 @@ import LoginPage from "../src/pages/Login";
 import RegisterPage from "./pages/Register";
 import ProfilePage from "./pages/profile";
 import FYP from './pages/FYP';
-import AuthLayout from "./AppLayout/Authlayout";
-
+import AuthLayout from "./AppLayout/Protected";
+import ReRoute from "./AppLayout/reRoute";
 //Routes for the main application
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
     <Route path='/' element={<AppLayout />}>
-      <Route path="/Messages" element={<Message />} />
-      <Route path="/Notifications" element={<Notifications />}/>
-      <Route path="/register" element={<RegisterPage/>}/>
-      <Route path='/profile' element={<ProfilePage/>}/>
-      <Route path='/Fyp' element={<FYP/>}/>
-    </Route>,
-    <Route element={<AuthLayout/>}>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage/>}/>
+      <Route path="/Messages" element={<AuthLayout><Message /></AuthLayout>} />
+      <Route path="/Notifications" element={<AuthLayout><Notifications /></AuthLayout>}/>
+      <Route path="/login" element={<ReRoute><LoginPage /></ReRoute>}/>
+      <Route path="/register" element={<ReRoute><RegisterPage/></ReRoute>}/>
+      <Route path='/profile' element={<AuthLayout><ProfilePage/></AuthLayout>}/>
+      <Route path='/Fyp' element={<AuthLayout><FYP/></AuthLayout>}/>
     </Route>
     </>
   )
