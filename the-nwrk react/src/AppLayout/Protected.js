@@ -6,7 +6,7 @@ const AuthLayout = ({ children }) => {
 //sort through and find the name token
 //verify the token
   const token = document.cookie
-  .split(',').find(rows => rows.startsWith('token'))?.split('=')[1];
+  .split(';').find(rows => rows.startsWith('token'))?.split('=')[1];
   
   if(!token){
 

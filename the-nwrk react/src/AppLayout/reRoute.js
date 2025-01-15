@@ -6,12 +6,13 @@ const ReRoute = ({ children }) => {
     //sort through and find the name token
     //verify the token
   const token = document.cookie
-  .split(',').find(rows => rows.startsWith('token'))?.split('=')[1];
+  .split(';').find(rows => rows.startsWith('token'))?.split('=')[1];
   
   if(token){
 
     return <Navigate to='/profile'/>
   }
+  return <>{children}</>;
 };
 
 export default ReRoute;  

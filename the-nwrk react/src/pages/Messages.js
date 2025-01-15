@@ -2,11 +2,12 @@ import { useState,useEffect, } from "react";
 import { useNavigate } from "react-router-dom";
 import Message from "../Components/Message";
 import load from '../Assets/load.png';
+import inProgress from '../Assets/loadingLG.jpg';
 
 
 
 
-const Messages = async () =>{
+const Messages =() =>{
     //state to hold the list of rooms
     const [message,setMessage]= useState(null)
     const [newMessage, setNewMessage] =useState('')
@@ -31,18 +32,20 @@ const Messages = async () =>{
             console.error(err)
         }
 
-
+        
     }
-
-    const HandleSendM = async ()=>{
-        try{
-            uRL = 'http://locslhost:3000/messages/newMessagee'
-            const response = await fetch(uRL,{
+    useEffect(()=>{
+        FetchMessages()
+    },[])
+    // const HandleSendM = async ()=>{
+    //     try{
+    //         uRL = 'http://locslhost:3000/messages/newMessagee'
+    //         const response = await fetch(uRL,{
                 
-            }
-            )
-        }
-    }
+    //         }
+    //         )
+    //     }
+    // }
 
     const messageGroups = async ()={
 
@@ -50,21 +53,19 @@ const Messages = async () =>{
 
     return(
         <>
+      
+    
+            <div className="bg-black">
+                <img src={inProgress} alt="" />
+                <div className="flex items-center justify-center">
+                    <h1 className="text-white animate-pulse font-bold font-xl p-6">Construction In Progress</h1>
+                    <img src={load} alt="" className="h-6 animate-spin" />
+        
+                </div>
+            </div>
             {!message && <p className="animate-pulse">Loading...</p>}
             {!message && <img src={load} alt="loading" className="animate-spin"/>}
 
-            {message && 
-
-                message.map((conversations,index)=>{
-                    
-                    <div
-                    key={conversations._id}
-                    className="border-2 border-neutral-400">
-
-                    </div>
-                })
-
-            }
         </>
     )
 
